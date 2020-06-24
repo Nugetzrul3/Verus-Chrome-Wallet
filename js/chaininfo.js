@@ -28,7 +28,7 @@ window.onload = function (){
         apiCall("/info").then(function(data) {
             var getsupply = data.result.supply
             var supply = getsupply / 100000000
-            $("#circSupply").text(supply + " SUGAR")
+            $("#circSupply").text(supply + " TR3B")
         })
     }
 

@@ -25,7 +25,7 @@ window.onload = function (){
         apiCall().then(function(data) {
             var getbalance = data.result.balance
             var balance = getbalance / 100000000
-            $("#currentBalance").text(balance + " SUGAR")
+            $("#currentBalance").text(balance + " TR3B")
         })
     }
 
@@ -34,7 +34,7 @@ window.onload = function (){
         apiCall().then(function (data) {
             var getreceived = data.result.received
             var received = getreceived / 100000000
-            $("#currentRecieved").text(received + " SUGAR")
+            $("#currentRecieved").text(received + " TR3B")
             })
     }
 
@@ -44,7 +44,7 @@ window.onload = function (){
             var getreceived = data.result.received
             var getbalance = data.result.balance
             var spent = (getreceived - getbalance) / 100000000
-            $("#currentSpent").text(spent + " SUGAR")
+            $("#currentSpent").text(spent + " TR3B")
             })
     }
 
@@ -56,7 +56,7 @@ window.onload = function (){
                 caclSpent()
             }
             else {
-                $("#currentBalance").text("Enter a valid Sugarchain address")
+                $("#currentBalance").text("Enter a valid Astracoin address")
                 $("#currentRecieved").text("")
                 $("#currentSpent").text("")
             }

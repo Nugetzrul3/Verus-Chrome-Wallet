@@ -5,15 +5,15 @@ $("#wifImport").click(function() {
     var wifKey = bitcoin.ECPair.fromWIF($("#wifInput").val())
     var netconfig = {					
         'network': {
-            'messagePrefix': '\x19Sugarchain Signed Message:\n',
+            'messagePrefix': '\x19Astracoin Signed Message:\n',
             'bip32': {
                 'public': 0x0488b21e,
                 'private': 0x0488ade4
             },
-            'bech32': 'sugar',
-            'pubKeyHash': 0x3F,
-            'scriptHash': 0x7D,
-            'wif': 0x80}
+            
+            'pubKeyHash': 0x35,
+            'scriptHash': 0x99,
+            'wif': 0x131}
     }
     var redeem = bitcoin.payments.p2wpkh({'pubkey': wifKey.publicKey, 'network': netconfig['network']})
 

@@ -1,8 +1,8 @@
 {
-    "name": "Sugarchain Wallet Extension",
+    "name": "Astracoin Wallet Extension",
     "version": "1.0",
     "manifest_version": 2,
-    "description": "Light Web Wallet for Sugarchain as a Chrome Extension. Source code may be viewed here: https://github.com/Nugetzrul3/Sugarchain-Chrome-Wallet",
+    "description": "Light Web Wallet for Astracoin as a Chrome Extension. Source code may be viewed here: https://github.com/CryptoLover/Browser_Wallet",
     "content_scripts": [
         {
         "matches": ["<all_urls>"],
@@ -11,7 +11,7 @@
     ],
     "browser_action": {
         "default_popup": "overlay.html",
-        "default_title": "Sugarchain Wallet",
+        "default_title": "Astracoin Wallet",
         "default_icon": "img/logo.png"
     }
 }
