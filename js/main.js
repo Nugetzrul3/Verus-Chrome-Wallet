@@ -20,9 +20,9 @@ $("#generateAddress").click(function() {
                 'public': 0x0488b21e,
                 'private': 0x0488ade4
             },
-            'pubKeyHash': 0x35,
-            'scriptHash': 0x99,
-            'wif': 0x131}
+            'pubKeyHash': 0x17,
+            'scriptHash': 0x3F,
+            'wif': 0x53}
     }
 
     if (addresstype == "3") {
