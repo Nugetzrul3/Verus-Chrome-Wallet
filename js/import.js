@@ -17,15 +17,15 @@ $("#wifImport").click(function() {
     var redeem = bitcoin.payments.p2wpkh({'pubkey': wifKey.publicKey, 'network': netconfig['network']})
 
     var legacyadd = bitcoin.payments.p2pkh({'pubkey': wifKey.publicKey, 'network': netconfig['network']}).address
-    var segwitadd = bitcoin.payments.p2sh({'redeem': redeem, 'network': netconfig['network']}).address
-    var bech32add = bitcoin.payments.p2wpkh({'pubkey': wifKey.publicKey, 'network': netconfig['network']}).address
+    // var segwitadd = bitcoin.payments.p2sh({'redeem': redeem, 'network': netconfig['network']}).address
+    // var bech32add = bitcoin.payments.p2wpkh({'pubkey': wifKey.publicKey, 'network': netconfig['network']}).address
 
     localStorage.setItem("address", bech32add)
     localStorage.setItem("wifKey", $("#wifInput").val())
 
     $("#showLegacy").text(legacyadd)
-    $("#showBech32").text(bech32add)
-    $("#showSegwit").text(segwitadd)
+    // $("#showBech32").text(bech32add)
+    // $("#showSegwit").text(segwitadd)
 
     alert("WIF successfully imported")
 })
