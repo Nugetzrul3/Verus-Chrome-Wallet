@@ -26,23 +26,23 @@ window.onload = function() {
 
 function getImportAPI() {
     // Set Network config according to Endpoint selection
-    if (localStorage.getItem("api") == "https://api.sugarchain.org" || localStorage.getItem("api") == null){
-        netconfig = {					
+    if (localStorage.getItem("api") == "https://api.astra-coin.com" || localStorage.getItem("api") == null){
+        netconfig = {
            'network': {
                 'messagePrefix': '\x19Astracoin Signed Message:\n',
                 'bip32': {
                     'public': 0x0488b21e,
                     'private': 0x0488ade4
                 },
-               'bech32': 'sugar',
-               'pubKeyHash': 0x35,
-               'scriptHash': 0x99,
-                'wif': 0x131}
+               // 'bech32': 'sugar',
+               'pubKeyHash': 0x17,
+               'scriptHash': 0x3F,
+                'wif': 0x53}
         }
     }
-    
+
     else if (localStorage.getItem("api") == "https://api-testnet.sugarchain.org") {
-        netconfig = {					
+        netconfig = {
             'network': {
                 'messagePrefix': '\x19Sugarchain Signed Message:\n',
                 'bip32': {
@@ -68,7 +68,7 @@ $("#wifImport").click(function() {
 
         var wifKey = bitcoin.ECPair.fromWIF(wifInput, netconfig['network'])
         var redeem = bitcoin.payments.p2wpkh({'pubkey': wifKey.publicKey, 'network': netconfig['network']})
-    
+
         var legacyadd = bitcoin.payments.p2pkh({'pubkey': wifKey.publicKey, 'network': netconfig['network']}).address
         //var segwitadd = bitcoin.payments.p2sh({'redeem': redeem, 'network': netconfig['network']}).address
         //var bech32add = bitcoin.payments.p2wpkh({'pubkey': wifKey.publicKey, 'network': netconfig['network']}).address
@@ -78,7 +78,7 @@ $("#wifImport").click(function() {
         // Only set bech32 address and WIF key
         localStorage.setItem("address", legacyadd)
         localStorage.setItem("wifKey", $("#wifInput").val())
-    
+
         $("#showLegacy").text(legacyadd)
         //$("#showBech32").text(bech32add)
         //$("#showSegwit").text(segwitadd)
@@ -130,7 +130,7 @@ var lang = {
         'chain-info': "Chain Info",
         'settings': "Settings"
     },
-    
+
 
     'fr': {
         // Page text
@@ -153,7 +153,7 @@ var lang = {
         'send': "Envoyer",
         'tx-history': "L'histoire",
         'chain-info': "Chaîne Données",
-        'settings': "Paramètres"        
+        'settings': "Paramètres"
     },
 
     'kr': {
@@ -241,7 +241,7 @@ var lang = {
             'logoutlink': "Выйти",
             'part2': "перед выходом",
         },
-    
+
         // Tab text
         'create-wallet': "Создать кошелек",
         'import-wallet': "Импортировать кошелек",

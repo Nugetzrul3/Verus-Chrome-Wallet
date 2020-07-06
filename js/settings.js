@@ -1,4 +1,4 @@
-//api = "https://api.sugarchain.org"
+//api = "https://api.astra-coin.com"
 //localStorage.setItem("api", api)
 var href
 var selectedEndpoint = document.getElementById("endpointSelect")
@@ -37,7 +37,7 @@ selectedEndpoint.onchange = function () {
     document.location.reload()
 }
 
-var mainnet = "https://api.sugarchain.org"
+var mainnet = "https://api.astra-coin.com"
 var testnet = "https://api-testnet.sugarchain.org"
 // Set the api in local storage
 function setAPI() {

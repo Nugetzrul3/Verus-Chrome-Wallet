@@ -30,22 +30,22 @@ window.onload = function() {
 
 function getMainAPI() {
     // Set Network config according to Endpoint selection
-    if (localStorage.getItem("api") == "https://api.sugarchain.org" || localStorage.getItem("api") == null){
-        netconfig = {					
+    if (localStorage.getItem("api") == "https://api.astra-coin.com" || localStorage.getItem("api") == null){
+        netconfig = {
            'network': {
                 'messagePrefix': '\x19Astracoin Signed Message:\n',
                 'bip32': {
                     'public': 0x0488b21e,
                     'private': 0x0488ade4
                 },
-               'pubKeyHash': 0x35,
-               'scriptHash': 0x99,
-                'wif': 0x131}
+                'pubKeyHash': 0x17,
+                'scriptHash': 0x3F,
+                 'wif': 0x53}
         }
     }
-    
+
     else if (localStorage.getItem("api") == "https://api-testnet.sugarchain.org") {
-        netconfig = {					
+        netconfig = {
             'network': {
                 'messagePrefix': '\x19Sugarchain Signed Message:\n',
                 'bip32': {
@@ -128,7 +128,7 @@ var lang = {
         'chain-info': "Chain Info",
         'settings': "Settings"
     },
-    
+
 
     'fr': {
         // Page text
@@ -151,7 +151,7 @@ var lang = {
         'send': "Envoyer",
         'tx-history': "L'histoire",
         'chain-info': "Chaîne Données",
-        'settings': "Paramètres"        
+        'settings': "Paramètres"
     },
 
     'kr': {

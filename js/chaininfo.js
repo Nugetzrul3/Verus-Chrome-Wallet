@@ -10,7 +10,7 @@ window.onload = function (){
 
     // Set history page to open to explorer according to mainnet or testnet & set ticker according to mainnet or testnet
     if (apiget == "mainnet" || apiget == null) {
-        api = "https://api.sugarchain.org"
+        api = "https://api.astra-coin.com"
         prefix = "TR3B"
         href = "https://sugarchain.org/explorer/#/address/" + getaddress
         $("#history").attr("href", href)

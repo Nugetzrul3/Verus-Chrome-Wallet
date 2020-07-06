@@ -25,7 +25,7 @@ window.onload = function() {
 
     // Set history page to open to explorer & sets placeholder to testnet or mainnet prefix
     if (apiget == "mainnet" || apiget == null) {
-        api = "https://api.sugarchain.org"
+        api = "https://api.astra-coin.com"
         inputPlaceholder.attr("placeholder", "sugar1q...")
         href = "https://sugarchain.org/explorer/#/address/" + address
     }
@@ -42,7 +42,7 @@ window.onload = function() {
 var errororsuccess
 function getSendAPI() {
     // Set Network config according to Endpoint selection
-    if (localStorage.getItem("api") == "https://api.sugarchain.org" || localStorage.getItem("api") == null){
+    if (localStorage.getItem("api") == "https://api.astra-coin.com" || localStorage.getItem("api") == null){
         netconfig = {					
            'network': {
                 'messagePrefix': '\x19Sugarchain Signed Message:\n',
