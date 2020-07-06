@@ -2,16 +2,11 @@
     "name": "Astracoin Wallet Extension",
     "version": "1.0",
     "manifest_version": 2,
-    "description": "Light Web Wallet for Astracoin as a Chrome Extension. Source code may be viewed here: https://github.com/CryptoLover/Browser_Wallet",
-    "content_scripts": [
-        {
-        "matches": ["<all_urls>"],
-        "js": ["js/wallet.js"]
-        }
-    ],
+    "description": "Light Web Wallet for Astracoin as a Chrome Extension. Source code may be viewed here: https://github.com/Nugetzrul3/Sugarchain-Chrome-Wallet",
     "browser_action": {
         "default_popup": "overlay.html",
         "default_title": "Astracoin Wallet",
         "default_icon": "img/logo.png"
-    }
+    },
+    "icons": {"48": "img/icon48.png"}
 }
