@@ -4,7 +4,7 @@ var href
 var selectedEndpoint = document.getElementById("endpointSelect")
 window.onload = function() {
     var getaddress = localStorage.getItem("address")
-    
+
     // Sets overlay.html to open to settings page
     localStorage.setItem("opened", "settings.html")
 
@@ -14,11 +14,11 @@ window.onload = function() {
 
     // Sets History Tab to open to explorer according to testnet or mainnet
     if (apiget == "mainnet" || apiget == null) {
-        href = "https://sugarchain.org/explorer/#/address/" + getaddress
+        href = "https://astra-coin.com/explorer/#/address/" + getaddress
     }
-    else if (apiget == "testnet"){
-        href = "https://sugar.wtf/#/address/" + getaddress
-    }
+    // else if (apiget == "testnet"){
+    //     href = "https://sugar.wtf/#/address/" + getaddress
+    // }
     $("#history").attr("href", href)
 
     if (apiget == null) {
@@ -38,7 +38,7 @@ selectedEndpoint.onchange = function () {
 }
 
 var mainnet = "https://api.astra-coin.com"
-var testnet = "https://api-testnet.sugarchain.org"
+// var testnet = "https://api-testnet.sugarchain.org"
 // Set the api in local storage
 function setAPI() {
     var apiSet = localStorage.getItem("apiSet")
@@ -46,9 +46,9 @@ function setAPI() {
     if (apiSet == "mainnet") {
         localStorage.setItem("api", mainnet)
     }
-    else if (apiSet == "testnet") {
-        localStorage.setItem("api", testnet)
-    }
+    // else if (apiSet == "testnet") {
+    //     localStorage.setItem("api", testnet)
+    // }
 }
 
 // Clear Local Storage (WIF, Address, reset overlay.html and reset endpoint)
@@ -79,7 +79,7 @@ var lang = {
         'chain-info': "Chain Info",
         'settings': "Settings"
     },
-    
+
 
     'fr': {
         // Page text
@@ -95,7 +95,7 @@ var lang = {
         'send': "Envoyer",
         'tx-history': "L'histoire",
         'chain-info': "Chaîne Données",
-        'settings': "Paramètres"        
+        'settings': "Paramètres"
     },
 
     'kr': {

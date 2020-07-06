@@ -14,11 +14,11 @@ window.onload = function() {
 
     // Sets History Tab to open to explorer
     if (apiget == "mainnet" || apiget == null) {
-        href = "https://sugarchain.org/explorer/#/address/" + getaddress
+        href = "https://astra-coin.com/explorer/#/address/" + getaddress
     }
-    else if (apiget == "testnet") {
-        href = "https://sugar.wtf/#/address/" + getaddress
-    }
+    // else if (apiget == "testnet") {
+    //     href = "https://sugar.wtf/#/address/" + getaddress
+    // }
     $("#history").attr("href", href)
 
     getImportAPI()
@@ -41,20 +41,20 @@ function getImportAPI() {
         }
     }
 
-    else if (localStorage.getItem("api") == "https://api-testnet.sugarchain.org") {
-        netconfig = {
-            'network': {
-                'messagePrefix': '\x19Sugarchain Signed Message:\n',
-                'bip32': {
-                    'public': 0x0488b21e,
-                    'private': 0x0488ade4
-                },
-                'bech32': 'tugar',
-                'pubKeyHash': 0x42,
-                'scriptHash': 0x80,
-                'wif': 0xEF}
-        }
-    }
+    // else if (localStorage.getItem("api") == "https://api-testnet.sugarchain.org") {
+    //     netconfig = {
+    //         'network': {
+    //             'messagePrefix': '\x19Sugarchain Signed Message:\n',
+    //             'bip32': {
+    //                 'public': 0x0488b21e,
+    //                 'private': 0x0488ade4
+    //             },
+    //             'bech32': 'tugar',
+    //             'pubKeyHash': 0x42,
+    //             'scriptHash': 0x80,
+    //             'wif': 0xEF}
+    //     }
+    // }
 }
 
 var alert1

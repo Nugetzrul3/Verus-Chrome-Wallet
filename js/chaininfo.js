@@ -12,15 +12,15 @@ window.onload = function (){
     if (apiget == "mainnet" || apiget == null) {
         api = "https://api.astra-coin.com"
         prefix = "TR3B"
-        href = "https://sugarchain.org/explorer/#/address/" + getaddress
+        href = "https://astra-coin.com/explorer/#/address/" + getaddress
         $("#history").attr("href", href)
     }
-    else if (apiget == "testnet"){
-        api = "https://api-testnet.sugarchain.org"
-        prefix = "TUGAR"
-        href = "https://sugar.wtf/#/" + getaddress
-        $("#history").attr("href", href)
-    }
+    // else if (apiget == "testnet"){
+    //     api = "https://api-testnet.sugarchain.org"
+    //     prefix = "TUGAR"
+    //     href = "https://sugar.wtf/#/" + getaddress
+    //     $("#history").attr("href", href)
+    // }
 
     // Define function to make api request according to certain call
     function apiCall(call) {
@@ -95,7 +95,7 @@ var lang = {
         'chain-info': "Chain Info",
         'settings': "Settings"
     },
-    
+
 
     'fr': {
         // Page text
@@ -115,7 +115,7 @@ var lang = {
         'send': "Envoyer",
         'tx-history': "L'histoire",
         'chain-info': "Chaîne Données",
-        'settings': "Paramètres"        
+        'settings': "Paramètres"
     },
 
     'kr': {
@@ -191,7 +191,7 @@ var lang = {
             'logoutlink': "Выйти",
             'part2': "перед выходом",
         },
-    
+
         // Tab text
         'create-wallet': "Создать кошелек",
         'import-wallet': "Импортировать кошелек",

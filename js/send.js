@@ -26,14 +26,14 @@ window.onload = function() {
     // Set history page to open to explorer & sets placeholder to testnet or mainnet prefix
     if (apiget == "mainnet" || apiget == null) {
         api = "https://api.astra-coin.com"
-        inputPlaceholder.attr("placeholder", "sugar1q...")
-        href = "https://sugarchain.org/explorer/#/address/" + address
+        inputPlaceholder.attr("placeholder", "A1gjd7...")
+        href = "https://astra-coin.com/explorer/#/address/" + address
     }
-    else if (apiget == "testnet"){
-        api = "https://api-testnet.sugarchain.org"
-        inputPlaceholder.attr("placeholder", "tugar1q...")
-        href = "https://sugar.wtf/#/address/" + address
-    }
+    // else if (apiget == "testnet"){
+    //     api = "https://api-testnet.sugarchain.org"
+    //     inputPlaceholder.attr("placeholder", "tugar1q...")
+    //     href = "https://sugar.wtf/#/address/" + address
+    // }
     $("#history").attr("href", href)
 
     getSendAPI()
@@ -43,7 +43,7 @@ var errororsuccess
 function getSendAPI() {
     // Set Network config according to Endpoint selection
     if (localStorage.getItem("api") == "https://api.astra-coin.com" || localStorage.getItem("api") == null){
-        netconfig = {					
+        netconfig = {
            'network': {
                 'messagePrefix': '\x19Sugarchain Signed Message:\n',
                 'bip32': {
@@ -56,21 +56,21 @@ function getSendAPI() {
                 'wif': 0x80}
         }
     }
-      
-    else if (localStorage.getItem("api") == "https://api-testnet.sugarchain.org") {
-        netconfig = {					
-           'network': {
-                'messagePrefix': '\x19Sugarchain Signed Message:\n',
-                'bip32': {
-                    'public': 0x0488b21e,
-                    'private': 0x0488ade4
-                },
-               'bech32': 'tugar',
-               'pubKeyHash': 0x42,
-               'scriptHash': 0x80,
-                'wif': 0xEF}
-        }
-    }
+
+    // else if (localStorage.getItem("api") == "https://api-testnet.sugarchain.org") {
+    //     netconfig = {
+    //        'network': {
+    //             'messagePrefix': '\x19Sugarchain Signed Message:\n',
+    //             'bip32': {
+    //                 'public': 0x0488b21e,
+    //                 'private': 0x0488ade4
+    //             },
+    //            'bech32': 'tugar',
+    //            'pubKeyHash': 0x42,
+    //            'scriptHash': 0x80,
+    //             'wif': 0xEF}
+    //     }
+    // }
 }
 
 $("#sendTx").click(function () {
@@ -111,7 +111,7 @@ $("#sendTx").click(function () {
             txbuilder.setVersion(2)
 
             txbuilder.addOutput(receiver, (amount - fee))
-            
+
             var txvalue = 0
             for (var i = 0, size = data.result.length; i < size; i++) {
                 var prevtxid = data.result[i].txid
@@ -148,7 +148,7 @@ $("#sendTx").click(function () {
                             var value = scripts[i].value
                             txbuilder.sign(i, wif, null, null, value, null)
                             break
-                        
+
                         case 'segwit':
                             var value = scripts[i].value
                             var redeem = bitcoin.payments.p2wpkh({'pubkey': wif.publicKey, 'network': netconfig['network']})
@@ -156,17 +156,17 @@ $("#sendTx").click(function () {
 
                             txbuilder.sign(i, wif, segwitscript.output, null, value, null)
                             break
-                        
+
                         case 'legacy':
                             txbuilder.sign(i, wif)
                             break
-                        
+
                         default:
                             showErrororSuccess.text("Bad UTXO")
                     }
                 }
                 var txfinal = txbuilder.build()
-                
+
                 // Broadcast the transaction to the network
                 Promise.resolve($.ajax({
                     'url': api + '/broadcast',
@@ -187,7 +187,7 @@ $("#sendTx").click(function () {
 
                     resetForm()
                 })
-                
+
             }
 
             else {
@@ -272,7 +272,7 @@ var lang = {
         'chain-info': "Chain Info",
         'settings': "Settings"
     },
-    
+
 
     'fr': {
         // Page text
@@ -300,7 +300,7 @@ var lang = {
         'send': "Envoyer",
         'tx-history': "L'histoire",
         'chain-info': "Chaîne Données",
-        'settings': "Paramètres"        
+        'settings': "Paramètres"
     },
 
     'kr': {
@@ -497,9 +497,9 @@ function setSendPageLang() {
         $("#send").text(lang['en']['send'])
         $("#tx-history").text(lang['en']['tx-history'])
         $("#chain-info").text(lang['en']['chain-info'])
-        $("#settings").text(lang['en']['settings'])        
+        $("#settings").text(lang['en']['settings'])
     }
-    
+
     else {
         // Page Text
         $("#send-to").text(lang[localStorage.getItem("lang")]['send-to'])
@@ -517,6 +517,6 @@ function setSendPageLang() {
         $("#send").text(lang[localStorage.getItem("lang")]['send'])
         $("#tx-history").text(lang[localStorage.getItem("lang")]['tx-history'])
         $("#chain-info").text(lang[localStorage.getItem("lang")]['chain-info'])
-        $("#settings").text(lang[localStorage.getItem("lang")]['settings'])        
+        $("#settings").text(lang[localStorage.getItem("lang")]['settings'])
     }
 }

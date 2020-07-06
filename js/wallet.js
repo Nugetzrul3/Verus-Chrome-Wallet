@@ -26,7 +26,7 @@ window.onload = function (){
 
     // Set the address in the input so that it gets balance
     $("#addressInput").val(getaddress)
-    
+
     apiget = localStorage.getItem("apiSet")
 
     // Set history page to open to explorer, sets placeholder to testnet or mainnet prefix & sets ticker according to mainnet or testnet
@@ -34,16 +34,16 @@ window.onload = function (){
         api = "https://api.astra-coin.com"
         prefix = "TR3B"
         inputPlaceholder.attr("placeholder", "sugar1q...")
-        href = "https://sugarchain.org/explorer/#/address/" + getaddress
+        href = "https://astra-coin.com/explorer/#/address/" + getaddress
         $("#history").attr("href", href)
     }
-    else if (apiget == "testnet"){
-        api = "https://api-testnet.sugarchain.org"
-        prefix = "TUGAR"
-        inputPlaceholder.attr("placeholder", "tugar1q...")
-        href = "https://sugar.wtf/#/address/" + getaddress
-        $("#history").attr("href", href)
-    }
+    // else if (apiget == "testnet"){
+    //     api = "https://api-testnet.sugarchain.org"
+    //     prefix = "TUGAR"
+    //     inputPlaceholder.attr("placeholder", "tugar1q...")
+    //     href = "https://sugar.wtf/#/address/" + getaddress
+    //     $("#history").attr("href", href)
+    // }
 
     // Define function to make api get request
     function apiCall() {
@@ -98,7 +98,7 @@ window.onload = function (){
         })
     }
 
-    // Set loop to continuously update balance 
+    // Set loop to continuously update balance
     setInterval(function() {
         checkAPI()
     }, 5000)
@@ -142,7 +142,7 @@ var lang = {
         'chain-info': "Chain Info",
         'settings': "Settings"
     },
-    
+
 
     'fr': {
         // Page text
@@ -160,7 +160,7 @@ var lang = {
         'send': "Envoyer",
         'tx-history': "L'histoire",
         'chain-info': "Chaîne Données",
-        'settings': "Paramètres"        
+        'settings': "Paramètres"
     },
 
     'kr': {
