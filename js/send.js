@@ -6,8 +6,6 @@ var wif
 var wifKey
 var api
 var address
-var netconfig
-var href
 window.onload = function() {
     // Get WIF and address from local storage
     wifKey = localStorage.getItem("wifKey")
@@ -24,53 +22,29 @@ window.onload = function() {
     apiget = localStorage.getItem("apiSet")
 
     // Set history page to open to explorer & sets placeholder to testnet or mainnet prefix
-    if (apiget == "mainnet" || apiget == null) {
-        api = "https://api.astra-coin.com"
-        inputPlaceholder.attr("placeholder", "A1gjd7...")
-        href = "https://astra-coin.com/explorer/#/address/" + address
-    }
-    // else if (apiget == "testnet"){
-    //     api = "https://api-testnet.sugarchain.org"
-    //     inputPlaceholder.attr("placeholder", "tugar1q...")
-    //     href = "https://sugar.wtf/#/address/" + address
-    // }
+
+    api = "https://api.astra-coin.com"
+
+    var href = "https://astra-coin.com/explorer/#/address/" + address
+    inputPlaceholder.attr("placeholder", "A1gjd7...")
+
     $("#history").attr("href", href)
 
-    getSendAPI()
 }
 
 var errororsuccess
-function getSendAPI() {
-    // Set Network config according to Endpoint selection
-    if (localStorage.getItem("api") == "https://api.astra-coin.com" || localStorage.getItem("api") == null){
-        netconfig = {
-           'network': {
-                'messagePrefix': '\x19Sugarchain Signed Message:\n',
-                'bip32': {
-                    'public': 0x0488b21e,
-                    'private': 0x0488ade4
-                },
-               'bech32': 'sugar',
-               'pubKeyHash': 0x3F,
-               'scriptHash': 0x7D,
-                'wif': 0x80}
-        }
-    }
 
-    // else if (localStorage.getItem("api") == "https://api-testnet.sugarchain.org") {
-    //     netconfig = {
-    //        'network': {
-    //             'messagePrefix': '\x19Sugarchain Signed Message:\n',
-    //             'bip32': {
-    //                 'public': 0x0488b21e,
-    //                 'private': 0x0488ade4
-    //             },
-    //            'bech32': 'tugar',
-    //            'pubKeyHash': 0x42,
-    //            'scriptHash': 0x80,
-    //             'wif': 0xEF}
-    //     }
-    // }
+var netconfig = {
+    'network': {
+        'messagePrefix': '\x19Astracoin Signed Message:\n',
+        'bip32': {
+            'public': 0x0488b21e,
+            'private': 0x0488ade4
+        },
+       'pubKeyHash': 0x17,
+       'scriptHash': 0x3F,
+        'wif': 0x53
+    }
 }
 
 $("#sendTx").click(function () {
@@ -83,7 +57,7 @@ $("#sendTx").click(function () {
         feeShow = convertAmountFormat(fee)
     }
     else {
-        fee = 1000
+        fee = 1000000
         feeShow = convertAmountFormat(fee)
     }
     // Don't put fee in convertion of amount format
@@ -93,7 +67,7 @@ $("#sendTx").click(function () {
 
     var scripts = []
 
-    ask = confirm("Confirm Transaction. You are about to send " + $("#amountSUGAR").val() + " SUGAR to " + receiver + ". The fee is " + feeShow/*(amountShow - Number($("#amountSUGAR").val()))*/ + " SUGAR\nTotal Cost: " + amountShow + " SUGAR")
+    ask = confirm("Confirm Transaction. You are about to send " + $("#amountSUGAR").val() + " TR3B to " + receiver + ". The fee is " + feeShow + " TR3B\nTotal Cost: " + amountShow + " TR3B")
     if (ask == true){
         var showErrororSuccess = $("#showErrororSuccess")
         showErrororSuccess.text("Sending Transaction...")
@@ -121,15 +95,7 @@ $("#sendTx").click(function () {
                 var script = bitcoin.Buffer(data.result[i].script, 'hex')
                 var typeofaddress = scriptType(script)
 
-                if (typeofaddress == 'bech32') {
-                    var bech32script = bitcoin.payments.p2wpkh({'pubkey': wif.publicKey, 'network': netconfig['network']})
-
-                    txbuilder.addInput(prevtxid, txindex, null, bech32script.output)
-                }
-
-                else {
-                    txbuilder.addInput(prevtxid, txindex)
-                }
+                txbuilder.addInput(prevtxid, txindex)
 
                 scripts.push({'script': script, 'type': typeofaddress, 'value': data.result[i].value})
             }
@@ -144,18 +110,6 @@ $("#sendTx").click(function () {
 
                 for (var i = 0, size = scripts.length; i < size; i++){
                     switch (scripts[i].type) {
-                        case 'bech32':
-                            var value = scripts[i].value
-                            txbuilder.sign(i, wif, null, null, value, null)
-                            break
-
-                        case 'segwit':
-                            var value = scripts[i].value
-                            var redeem = bitcoin.payments.p2wpkh({'pubkey': wif.publicKey, 'network': netconfig['network']})
-                            var segwitscript = bitcoin.payments.p2sh({'redeem': redeem, 'network': netconfig['network']})
-
-                            txbuilder.sign(i, wif, segwitscript.output, null, value, null)
-                            break
 
                         case 'legacy':
                             txbuilder.sign(i, wif)
@@ -206,14 +160,6 @@ $("#sendTx").click(function () {
 // Get type of address given the script hash
 function scriptType(script) {
     var type = undefined
-
-    if (script[0] == bitcoin.opcodes.OP_0 && script[1] == 20) {
-        type = 'bech32'
-    }
-
-    if (script[0] == bitcoin.opcodes.OP_HASH160 && script[1] == 20) {
-        type = 'segwit'
-    }
 
     if (script[0] == bitcoin.opcodes.OP_DUP && script[1] == bitcoin.opcodes.OP_HASH160 && script[2] == 20) {
         type = 'legacy'

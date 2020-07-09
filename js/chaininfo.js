@@ -1,26 +1,15 @@
-var api
-var prefix
-var href
 window.onload = function (){
     var getaddress = localStorage.getItem("address")
     // Set overlay.js to open to chain info page
     localStorage.setItem("opened", "chaininfo.html")
 
-    apiget = localStorage.getItem("apiSet")
+    var api = "https://api.astra-coin.com"
+    var prefix = "TR3B"
 
     // Set history page to open to explorer according to mainnet or testnet & set ticker according to mainnet or testnet
-    if (apiget == "mainnet" || apiget == null) {
-        api = "https://api.astra-coin.com"
-        prefix = "TR3B"
-        href = "https://astra-coin.com/explorer/#/address/" + getaddress
-        $("#history").attr("href", href)
-    }
-    // else if (apiget == "testnet"){
-    //     api = "https://api-testnet.sugarchain.org"
-    //     prefix = "TUGAR"
-    //     href = "https://sugar.wtf/#/" + getaddress
-    //     $("#history").attr("href", href)
-    // }
+    var href = "https://astra-coin.com/explorer/#/address/" + getaddress
+
+    $("#history").attr("href", href)
 
     // Define function to make api request according to certain call
     function apiCall(call) {
