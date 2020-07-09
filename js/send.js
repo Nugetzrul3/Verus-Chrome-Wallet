@@ -48,7 +48,7 @@ var netconfig = {
 }
 
 $("#sendTx").click(function () {
-    var feeinput = document.getElementById("feeSugar")
+    var feeinput = document.getElementById("feeTr3b")
     console.log(feeinput.value)
     var fee = undefined
     var feeShow = undefined
@@ -61,13 +61,13 @@ $("#sendTx").click(function () {
         feeShow = convertAmountFormat(fee)
     }
     // Don't put fee in convertion of amount format
-    var amount = convertAmountFormat(parseFloat($("#amountSUGAR").val()), true) + fee
+    var amount = convertAmountFormat(parseFloat($("#amountTR3B").val()), true) + fee
     var amountShow = convertAmountFormat(amount)
     var receiver = $("#sendInput").val()
 
     var scripts = []
 
-    ask = confirm("Confirm Transaction. You are about to send " + $("#amountSUGAR").val() + " TR3B to " + receiver + ". The fee is " + feeShow + " TR3B\nTotal Cost: " + amountShow + " TR3B")
+    ask = confirm("Confirm Transaction. You are about to send " + $("#amountTR3B").val() + " TR3B to " + receiver + ". The fee is " + feeShow + " TR3B\nTotal Cost: " + amountShow + " TR3B")
     if (ask == true){
         var showErrororSuccess = $("#showErrororSuccess")
         showErrororSuccess.text("Sending Transaction...")
@@ -171,9 +171,9 @@ function scriptType(script) {
 
 // Reset the values after user sends
 function resetForm() {
-    $("#amountSUGAR").val('')
+    $("#amountTR3B").val('')
     $("#sendInput").val('')
-    $("#feeSugar").val('')
+    $("#feeTr3b").val('')
 }
 
 // Conversion of standars integer to satoshis
@@ -192,7 +192,7 @@ var lang = {
     'en': {
         // Page text
         'send-to': "Send To: ",
-        'amount-sugar': "Amount: ",
+        'amount-tr3b': "Amount: ",
         'sendTx': "Send Transaction",
         'showErrororSuccess': {
             'success': "Success! Transaction ID: ",
@@ -223,7 +223,7 @@ var lang = {
     'fr': {
         // Page text
         'send-to': "Envoyer pour: ",
-        'amount-sugar': "Quantité: ",
+        'amount-tr3b': "Quantité: ",
         'sendTx': "Envoyer Transaction",
         'showErrororSuccess': {
             'success': "Succès! Transaction ID: ",
@@ -252,7 +252,7 @@ var lang = {
     'kr': {
         // Page text
         'send-to': "보내다 에게: ",
-        'amount-sugar': "양: ",
+        'amount-tr3b': "양: ",
         'sendTx': "보내다 트랜잭션",
         'showErrororSuccess': {
             'success': "성공! 트랜잭션 ID: ",
@@ -281,7 +281,7 @@ var lang = {
     'id': {
         // Page text
         'send-to': "Kirim Untuk: ",
-        'amount-sugar': "Jumlahnya: ",
+        'amount-tr3b': "Jumlahnya: ",
         'sendTx': "Kirim Transaksi",
         'showErrororSuccess': {
             'success': "Keberhasilan! Transaksi ID: ",
@@ -310,7 +310,7 @@ var lang = {
     'es': {
         // Page text
         'send-to': "Enviar a: ",
-        'amount-sugar': "Cantidad: ",
+        'amount-tr3b': "Cantidad: ",
         'sendTx': "Enviar Transacción",
         'showErrororSuccess': {
             'success': "Éxito! Transacción ID: ",
@@ -339,7 +339,7 @@ var lang = {
     'ru': {
         // Page text
         'send-to': "послать к: ",
-        'amount-sugar': "сумма: ",
+        'amount-tr3b': "сумма: ",
         'sendTx': "послать трансакция",
         'showErrororSuccess': {
             'success': "Success! трансакция ID: ",
@@ -368,7 +368,7 @@ var lang = {
     'zh': {
         // Page text
         'send-to': "发送至: ",
-        'amount-sugar': "数量: ",
+        'amount-tr3b': "数量: ",
         'sendTx': "发送交易",
         'showErrororSuccess': {
             'success': "成功! 交易 ID: ",
@@ -397,7 +397,7 @@ var lang = {
     'ja': {
         // Page text
         'send-to': "に 送る: ",
-        'amount-sugar': "量: ",
+        'amount-tr3b': "量: ",
         'sendTx': "送る トランザクション",
         'showErrororSuccess': {
             'success': "成功! トランザクション ID: ",
@@ -429,7 +429,7 @@ function setSendPageLang() {
     if (localStorage['lang'] == null) {
         // Page Text
         $("#send-to").text(lang['en']['send-to'])
-        $("#amount-sugar").text(lang['en']['amount-sugar'])
+        $("#amount-tr3b").text(lang['en']['amount-tr3b'])
         $("#sendTx").text(lang['en']['sendTx'])
         $("#part1").text(lang['en']['logoutreminder']['part1'])
         $("#logoutlink").text(lang['en']['logoutreminder']['logoutlink'])
@@ -449,7 +449,7 @@ function setSendPageLang() {
     else {
         // Page Text
         $("#send-to").text(lang[localStorage.getItem("lang")]['send-to'])
-        $("#amount-sugar").text(lang[localStorage.getItem("lang")]['amount-sugar'])
+        $("#amount-tr3b").text(lang[localStorage.getItem("lang")]['amount-tr3b'])
         $("#sendTx").text(lang[localStorage.getItem("lang")]['sendTx'])
         $("#part1").text(lang[localStorage.getItem("lang")]['logoutreminder']['part1'])
         $("#logoutlink").text(lang[localStorage.getItem("lang")]['logoutreminder']['logoutlink'])

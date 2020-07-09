@@ -18,4 +18,4 @@ Light astracoin Web wallet in the form of a chrome extension which utilises bitc
 ### TODO:
 
 - [x] Add send function: https://github.com/Nugetzrul3/AstraCoin-Chrome-Wallet/pull/3
-- [ ] Fix minor bugs with receiving and sending sugar
+- [ ] Fix minor bugs with receiving and sending tr3b

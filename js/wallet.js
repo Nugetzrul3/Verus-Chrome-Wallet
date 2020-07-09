@@ -6,7 +6,7 @@ var api
 var prefix
 
 // Define variable to set QR Code
-var sugarqrcode = new QRCode(document.getElementById("astraqr"), {
+var tr3bqrcode = new QRCode(document.getElementById("astraqr"), {
     width: 100,
     height: 100,
     position: "center"
@@ -80,10 +80,10 @@ window.onload = function (){
 // Generate QR code
 function qrcodegen() {
     if (!document.getElementById("addressInput").value) {
-        sugarqrcode.makeCode("Enter an address")
+        tr3bqrcode.makeCode("Enter an address")
     }
     else {
-        sugarqrcode.makeCode(document.getElementById("addressInput").value)
+        tr3bqrcode.makeCode(document.getElementById("addressInput").value)
     }
 }
 
