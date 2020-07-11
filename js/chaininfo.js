@@ -49,9 +49,9 @@ window.onload = function (){
 
     function getPrice() {
         apiCall("/price").then(function(data) {
-            var usd = data.result.usd
-            var btc = Number(data.result.btc).toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8})
-            $("#priceBTC").text(btc)
+            var usd = data.result
+            //var btc = Number(data.result.btc).toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8})
+            //$("#priceBTC").text(btc)
             $("#priceUSD").text(usd)
         })
     }
