@@ -3,7 +3,7 @@ window.onload = function (){
     // Set overlay.js to open to chain info page
     localStorage.setItem("opened", "chaininfo.html")
 
-    var api = "https://api.astra-coin.com"
+    var api = "http://70.35.200.235:1234"
     var prefix = "TR3B"
 
     // Set history page to open to explorer according to mainnet or testnet & set ticker according to mainnet or testnet
@@ -30,11 +30,15 @@ window.onload = function (){
     function getNetHash() {
         apiCall("/info").then(function(data) {
             var gethash = data.result.nethash
-            var hash = gethash / 1000000
-            $("#netHashrate").text(hash.toFixed(2) + " MH/s")
+            if (gethash >= 1000000000) {
+                $("#netHashrate").text((gethash / 1000000000).toFixed(2) + ' Gh/s')
+            } else if (gethash >= 1000000) {
+                $("#netHashrate").text((gethash / 1000000).toFixed(2) + ' Mh/s')
+            } else if (gethash >= 1000) {
+                $("#netHashrate").text((gethash / 1000).toFixed(2) + ' Kh/s')
+            }
         })
     }
-
     function getSupply() {
         apiCall("/info").then(function(data) {
             var getsupply = data.result.supply
