@@ -23,9 +23,9 @@ window.onload = function() {
 
     // Set history page to open to explorer & sets placeholder to testnet or mainnet prefix
 
-    api = "https://api.astra-coin.com"
+    api = "https://astraexplorer.com/"
 
-    var href = "https://astra-coin.com/explorer/#/address/" + address
+    var href = "https://cryptoloverbots.com/explorer/#/address/" + address
     inputPlaceholder.attr("placeholder", "A1gjd7...")
 
     $("#history").attr("href", href)

@@ -1,5 +1,5 @@
 # AstraCoin-Chrome-Wallet
-Light astracoin Web wallet in the form of a chrome extension which utilises bitcoin.js and a simple REST API https://api.astra-coin.com
+Light astracoin Web wallet in the form of a chrome extension which utilises bitcoin.js and a simple REST API https://astraexplorer.com/
 
 
 ### Installation

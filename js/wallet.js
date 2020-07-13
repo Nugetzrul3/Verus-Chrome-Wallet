@@ -30,7 +30,7 @@ window.onload = function (){
     inputPlaceholder.attr("placeholder", "A1gjd7...")
     prefix = "TR3B"
 
-    api = "https://api.astra-coin.com"
+    api = "https://astraexplorer.com/"
 
     // Sets history tab to open to explorer
     var href = "https://astra-coin.com/explorer/#/address/" + getaddress
