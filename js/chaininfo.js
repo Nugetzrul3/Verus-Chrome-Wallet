@@ -3,11 +3,11 @@ window.onload = function (){
     // Set overlay.js to open to chain info page
     localStorage.setItem("opened", "chaininfo.html")
 
-    var api = "http://70.35.200.235:1234"
+    var api = "https://astraexplorer.com/"
     var prefix = "TR3B"
 
     // Set history page to open to explorer according to mainnet or testnet & set ticker according to mainnet or testnet
-    var href = "https://astra-coin.com/explorer/#/address/" + getaddress
+    var href = "https://cryptoloverbots.com/explorer/#/address/" + getaddress
 
     $("#history").attr("href", href)
 
