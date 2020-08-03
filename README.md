@@ -1,5 +1,5 @@
 # Verus-Chrome-Wallet
-Light astracoin Web wallet in the form of a chrome extension which utilises bitcoin.js and a simple REST API https://astraexplorer.com/
+Light Veruscoin Web wallet in the form of a chrome extension which utilises bitcoin.js and a simple REST API (To be added later)
 
 
 ### Installation
@@ -17,5 +17,5 @@ Light astracoin Web wallet in the form of a chrome extension which utilises bitc
 
 ### TODO:
 
-- [x] Add send function: https://github.com/Nugetzrul3/Verus-Chrome-Wallet/pull/3
-- [ ] Fix minor bugs with receiving and sending tr3b
+- [x] Add send function: https://github.com/Nugetzrul3/Sugarchain-Chrome-Wallet/pull/3
+- [ ] Fix minor bugs with receiving and sending VRSC

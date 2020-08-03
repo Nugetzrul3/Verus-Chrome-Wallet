@@ -23,10 +23,10 @@ window.onload = function() {
 
     // Set history page to open to explorer & sets placeholder to testnet or mainnet prefix
 
-    api = "https://astraexplorer.com/"
+    api = "http://192.168.1.104:1234"
 
-    var href = "https://cryptoloverbots.com/explorer/#/address/" + address
-    inputPlaceholder.attr("placeholder", "A1gjd7...")
+    var href = "https://explorer.veruscoin.io/address/" + address
+    inputPlaceholder.attr("placeholder", "RFd...")
 
     $("#history").attr("href", href)
 
@@ -36,19 +36,19 @@ var errororsuccess
 
 var netconfig = {
     'network': {
-        'messagePrefix': '\x19Astracoin Signed Message:\n',
+        'messagePrefix': '\x19Verus Signed Message:\n',
         'bip32': {
             'public': 0x0488b21e,
             'private': 0x0488ade4
         },
-       'pubKeyHash': 0x17,
-       'scriptHash': 0x3F,
-        'wif': 0x53
+        'pubKeyHash': 0x3C,
+        'scriptHash': 0x55,
+        'wif': 0xBC
     }
 }
 
 $("#sendTx").click(function () {
-    var feeinput = document.getElementById("feeTr3b")
+    var feeinput = document.getElementById("feeVRSC")
     console.log(feeinput.value)
     var fee = undefined
     var feeShow = undefined
@@ -57,17 +57,17 @@ $("#sendTx").click(function () {
         feeShow = convertAmountFormat(fee)
     }
     else {
-        fee = 10000
+        fee = 100
         feeShow = convertAmountFormat(fee)
     }
     // Don't put fee in convertion of amount format
-    var amount = convertAmountFormat(parseFloat($("#amountTR3B").val()), true) + fee
+    var amount = convertAmountFormat(parseFloat($("#amountVRSC").val()), true) + fee
     var amountShow = convertAmountFormat(amount)
     var receiver = $("#sendInput").val()
 
     var scripts = []
 
-    ask = confirm("Confirm Transaction. You are about to send " + $("#amountTR3B").val() + " TR3B to " + receiver + ". The fee is " + feeShow + " TR3B\nTotal Cost: " + amountShow + " TR3B")
+    ask = confirm("Confirm Transaction. You are about to send " + $("#amountVRSC").val() + " VRSC to " + receiver + ". The fee is " + feeShow + " VRSC\nTotal Cost: " + amountShow + " VRSC")
     if (ask == true){
         var showErrororSuccess = $("#showErrororSuccess")
         showErrororSuccess.text("Sending Transaction...")
@@ -82,7 +82,7 @@ $("#sendTx").click(function () {
         })).then(function(data) {
 
             var txbuilder = new bitcoin.TransactionBuilder(netconfig['network'])
-            txbuilder.setVersion(2)
+            txbuilder.setVersion(1)
 
             txbuilder.addOutput(receiver, (amount - fee))
 
@@ -120,6 +120,7 @@ $("#sendTx").click(function () {
                     }
                 }
                 var txfinal = txbuilder.build()
+                console.log(txfinal.toHex())
 
                 // Broadcast the transaction to the network
                 Promise.resolve($.ajax({
@@ -171,9 +172,9 @@ function scriptType(script) {
 
 // Reset the values after user sends
 function resetForm() {
-    $("#amountTR3B").val('')
+    $("#amountVRSC").val('')
     $("#sendInput").val('')
-    $("#feeTr3b").val('')
+    $("#feeVRSC").val('')
 }
 
 // Conversion of standars integer to satoshis

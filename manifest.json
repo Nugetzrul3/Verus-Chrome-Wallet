@@ -1,11 +1,11 @@
 {
-    "name": "Astracoin Wallet Extension",
+    "name": "Veruscoin Wallet Extension",
     "version": "1.0",
     "manifest_version": 2,
-    "description": "Light Web Wallet for Astracoin as a Chrome Extension. Source code may be viewed here: https://github.com/AstraTR3B/Browser_Wallet",
+    "description": "Light Web Wallet for Veruscoin as a Chrome Extension. Source code may be viewed here: https://github.com/AstraTR3B/Browser_Wallet",
     "browser_action": {
         "default_popup": "overlay.html",
-        "default_title": "Astracoin Wallet",
+        "default_title": "Veruscoin Wallet",
         "default_icon": "img/logo.png"
     },
     "icons": {"48": "img/icon48.png"}

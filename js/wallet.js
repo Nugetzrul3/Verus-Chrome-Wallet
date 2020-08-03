@@ -6,7 +6,7 @@ var api
 var prefix
 
 // Define variable to set QR Code
-var tr3bqrcode = new QRCode(document.getElementById("astraqr"), {
+var tr3bqrcode = new QRCode(document.getElementById("vrscqr"), {
     width: 100,
     height: 100,
     position: "center"
@@ -27,13 +27,13 @@ window.onload = function (){
 
     // Set history page to open to explorer, sets placeholder to prefix & sets ticker
 
-    inputPlaceholder.attr("placeholder", "A1gjd7...")
-    prefix = "TR3B"
+    inputPlaceholder.attr("placeholder", "RFd...")
+    prefix = "VRSC"
 
-    api = "https://astraexplorer.com/"
+    api = "http://192.168.1.104:1234"
 
     // Sets history tab to open to explorer
-    var href = "https://astra-coin.com/explorer/#/address/" + getaddress
+    var href = "https://explorer.veruscoin.io/address/" + getaddress
 
     $("#history").attr("href", href)
 
@@ -62,7 +62,7 @@ window.onload = function (){
                 qrcodegen()
             }
             else {
-                $("#currentBalance").text("Enter a valid Astracoin address")
+                $("#currentBalance").text("Enter a valid Veruscoin address")
                 $("#currentRecieved").text("")
                 $("#currentSpent").text("")
             }

@@ -7,7 +7,7 @@ window.onload = function() {
     setSettingsLang()
 
     // Sets History Tab to open to explorer according to testnet or mainnet
-    var href = "https://astra-coin.com/explorer/#/address/" + getaddress
+    var href = "https://explorer.veruscoin.io/address/" + getaddress
     $("#history").attr("href", href)
 }
 

@@ -12,7 +12,7 @@ window.onload = function() {
     setMainLang()
 
     // Sets History Tab to open to explorer
-    var href = "https://astra-coin.com/explorer/#/address/" + getaddress
+    var href = "https://explorer.veruscoin.io/address/" + getaddress
 
     $("#history").attr("href", href)
 
@@ -20,14 +20,14 @@ window.onload = function() {
 
 var netconfig = {
     'network': {
-        'messagePrefix': '\x19Astracoin Signed Message:\n',
+        'messagePrefix': '\x19Verus Signed Message:\n',
         'bip32': {
             'public': 0x0488b21e,
             'private': 0x0488ade4
         },
-       'pubKeyHash': 0x17,
-       'scriptHash': 0x3F,
-        'wif': 0x53
+        'pubKeyHash': 0x3C,
+        'scriptHash': 0x55,
+        'wif': 0xBC
     }
 }
 
@@ -52,7 +52,7 @@ $("#generateAddress").click(function() {
     var getaddress = localStorage.getItem("address")
 
     // Sets History Tab to open to explorer
-    var href = "https://astra-coin.com/explorer/#/address/" + getaddress
+    var href = "https://explorer.veruscoin.io/address/" + getaddress
 
     $("#history").attr("href", href)
 })

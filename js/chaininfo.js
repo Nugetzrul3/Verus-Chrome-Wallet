@@ -3,11 +3,11 @@ window.onload = function (){
     // Set overlay.js to open to chain info page
     localStorage.setItem("opened", "chaininfo.html")
 
-    var api = "https://astraexplorer.com/"
-    var prefix = "TR3B"
+    var api = "http://192.168.1.104:1234"
+    var prefix = "VRSC"
 
     // Set history page to open to explorer according to mainnet or testnet & set ticker according to mainnet or testnet
-    var href = "https://cryptoloverbots.com/explorer/#/address/" + getaddress
+    var href = "https://explorer.veruscoin.io/address/" + getaddress
 
     $("#history").attr("href", href)
 
@@ -49,9 +49,9 @@ window.onload = function (){
 
     function getPrice() {
         apiCall("/price").then(function(data) {
-            var usd = data.result
-            //var btc = Number(data.result.btc).toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8})
-            //$("#priceBTC").text(btc)
+            var usd = data.result.usd
+            var btc = Number(data.result.btc).toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8})
+            $("#priceBTC").text(btc)
             $("#priceUSD").text(usd)
         })
     }
